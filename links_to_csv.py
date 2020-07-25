@@ -5,7 +5,7 @@ import logging
 import re
 from tqdm import tqdm
 
-MODEL = 'test'
+MODEL = '5er'
 
 FIELDS_LIST = ['bodyType', 'brand', 'color', 'fuelType', 'modelDate', 'name', 'name_full', 'numberOfDoors',
                'productionDate', 'vehicleConfiguration',
@@ -86,7 +86,7 @@ def get_record(url_link):
                 card_new_info = card.find_all('div', class_='CardInfoGrouped__cellValue')
                 price = re.findall(r'\d+', card.find('span', class_='OfferPriceCaption__price').text)
                 price = ''.join(price)
-                drive = card_new_info[2].text
+                drive = card_new_info[3].text
                 wheel = 'Левый'
                 state = 'Не требует ремонта'
                 owners = 0
