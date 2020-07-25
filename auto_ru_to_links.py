@@ -2,11 +2,12 @@ import logging
 import requests
 from bs4 import BeautifulSoup
 
-MAX_PAGE = 36
-MODEL = '3er'
+MAX_PAGE = 6
+MODEL = 'x7'
 
 logging.basicConfig(filename=MODEL+'.log', level=logging.DEBUG, format='%(asctime)s %(message)s')
 logging.warning('is when this event was logged.')
+print('Processing ' + MODEL)
 with open(MODEL+'_links.txt', 'w', encoding='utf-8') as f:
     for i in range(1, MAX_PAGE + 1):
         response = requests.get("https://auto.ru/moskva/cars/bmw/"+MODEL+"/all/?output_type=list&page=" + str(i))

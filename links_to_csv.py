@@ -5,7 +5,7 @@ import logging
 import re
 from tqdm import tqdm
 
-MODEL = '5er'
+MODEL = 'x7'
 
 FIELDS_LIST = ['bodyType', 'brand', 'color', 'fuelType', 'modelDate', 'name', 'name_full', 'numberOfDoors',
                'productionDate', 'vehicleConfiguration',
@@ -63,7 +63,7 @@ def get_record(url_link):
                 name = sidebar_meta.find_all('meta', itemprop="name")[7]['content']
                 find_res = card_info.find('li', class_="CardInfo__row CardInfo__row_kmAge")
                 drive = card_info.find('li', class_="CardInfo__row_drive"). \
-                    find_all('span', class_='CardInfo__cell')[1].text
+                    find_all('span', class_='CardInfo__cell')[1].text.lower()
                 wheel = card_info.find('li', class_="CardInfo__row_wheel"). \
                     find_all('span', class_='CardInfo__cell')[1].text
                 state = card_info.find('li', class_="CardInfo__row_state"). \
@@ -83,10 +83,10 @@ def get_record(url_link):
                 else:
                     owningTime = ''
             else:
-                card_new_info = card.find_all('div', class_='CardInfoGrouped__cellValue')
                 price = re.findall(r'\d+', card.find('span', class_='OfferPriceCaption__price').text)
                 price = ''.join(price)
-                drive = card_new_info[3].text
+                card_new_trans = card.find('li', class_='CardInfoGrouped__row CardInfoGrouped__row_drive')
+                drive = card_new_trans.find('div', class_='CardInfoGrouped__cellValue').text.lower()
                 wheel = 'Левый'
                 state = 'Не требует ремонта'
                 owners = 0
@@ -104,6 +104,7 @@ def get_record(url_link):
 
         except (AttributeError, IndexError, KeyError) as e:
             logging.error(e, exc_info=True)
+            logging.error(url_link)
             return 'sale'
 
     else:
