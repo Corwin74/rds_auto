@@ -10,6 +10,7 @@ import requests
 from bs4 import BeautifulSoup
 import logging
 import re
+import os
 from tqdm import tqdm
 
 MODEL = 'x7'  # Указываем серию BMW, которую будем парсить
@@ -123,8 +124,9 @@ def get_record(url_link):
         return 'sale'
 
 
-with open(r'C:\Users\Alex\PycharmProjects\untitled\\' + MODEL + '_links.txt') as f:
-    with open(MODEL + '_data.csv', 'w', encoding='utf-8', newline='') as csvfile:
+cwd = os.getcwd()
+with open(cwd + r'\\data\\' + MODEL + '_links.txt') as f:
+    with open(cwd + r'\\data\\' + MODEL + '_data.csv', 'w', encoding='utf-8', newline='') as csvfile:
         csv_writer = csv.writer(csvfile)
         csv_writer.writerow(FIELDS_LIST)
         for line in tqdm(f.readlines()):
