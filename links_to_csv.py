@@ -1,3 +1,10 @@
+"""
+Модуль читает по одной ссылки из заранее сформированного файла с ссылками на страницу
+с предложением конкретной машины, парсит ее и записывает инфомацию в файл формата csv
+Режим полуавтоматичский, необходимо указать серию в константе MODEL.
+На выходе получаем файл с именем типа: MODEL_data.csv, например x7_data.csv
+"""
+
 import csv
 import requests
 from bs4 import BeautifulSoup
@@ -5,8 +12,7 @@ import logging
 import re
 from tqdm import tqdm
 
-MODEL = 'x7'
-
+MODEL = 'x7'  # Указываем серию BMW, которую будем парсить
 FIELDS_LIST = ['bodyType', 'brand', 'color', 'fuelType', 'modelDate', 'name', 'name_full', 'numberOfDoors',
                'productionDate', 'vehicleConfiguration',
                'vehicleTransmission', 'engineDisplacement', 'enginePower', 'description', 'mileage', 'equipment',
@@ -18,6 +24,11 @@ logging.warning('is when this event was logged.')
 
 
 def get_record(url_link):
+    """
+    Функция получает ссылку на предложение о продаже, парсит страницу
+    Если парсинг удачный возвращает список с полученными значениями.
+    Если цена не найдена или возникла ошибка обработки возвращает строку 'sale'
+    """
     url_link = re.sub(r"^\s+|\n|\r|\s+$", '', url_link)
     resp = requests.get(url_link)
     if resp.status_code == 200:
@@ -58,7 +69,7 @@ def get_record(url_link):
             enginePower = sidebar_meta.find('meta', itemprop="enginePower")['content']
             description = re.sub(r"^\s+|\n|\r|\s+$", '', sidebar_meta.find('meta', itemprop="description")['content'])
             equipment = str(equip_dict)
-            if card_info:
+            if card_info:  # машина с пробегом
                 name_full = sidebar_meta.find_all('meta', itemprop="name")[0]['content']
                 name = sidebar_meta.find_all('meta', itemprop="name")[7]['content']
                 find_res = card_info.find('li', class_="CardInfo__row CardInfo__row_kmAge")
@@ -82,7 +93,7 @@ def get_record(url_link):
                     owningTime = temp_ot.find_all('span', class_='CardInfo__cell')[1].text
                 else:
                     owningTime = ''
-            else:
+            else:  # машина новая
                 price = re.findall(r'\d+', card.find('span', class_='OfferPriceCaption__price').text)
                 price = ''.join(price)
                 card_new_trans = card.find('li', class_='CardInfoGrouped__row CardInfoGrouped__row_drive')
@@ -103,8 +114,8 @@ def get_record(url_link):
                     state, owners, pts, customs, owningTime, price]
 
         except (AttributeError, IndexError, KeyError) as e:
-            logging.error(e, exc_info=True)
-            logging.error(url_link)
+            logging.error(e, exc_info=True)  # Пишем возникшую ошибку
+            logging.error(url_link)  # и ссылку в которой она возникла
             return 'sale'
 
     else:
