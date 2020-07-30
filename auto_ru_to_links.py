@@ -10,6 +10,7 @@
 
 import logging
 import requests
+import os
 from bs4 import BeautifulSoup
 
 MAX_PAGE = 6
@@ -18,7 +19,8 @@ MODEL = 'x7'
 logging.basicConfig(filename=MODEL + '.log', level=logging.DEBUG, format='%(asctime)s %(message)s')
 logging.warning('is when this event was logged.')
 print('Processing ' + MODEL)
-with open(MODEL + '_links.txt', 'w', encoding='utf-8') as f:
+cwd = os.getcwd()
+with open(cwd + r'\\data\\' + MODEL + '_links.txt', 'w', encoding='utf-8') as f:
     for i in range(1, MAX_PAGE + 1):
         response = requests.get("https://auto.ru/moskva/cars/bmw/" + MODEL + "/all/?output_type=list&page=" + str(i))
         if response.status_code == 200:
