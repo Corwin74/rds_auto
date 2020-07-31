@@ -13,8 +13,8 @@ import requests
 import os
 from bs4 import BeautifulSoup
 
-MAX_PAGE = 6
-MODEL = 'x7'
+MAX_PAGE = 1
+MODEL = 'i3'
 
 logging.basicConfig(filename=MODEL + '.log', level=logging.DEBUG, format='%(asctime)s %(message)s')
 logging.warning('is when this event was logged.')

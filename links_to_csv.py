@@ -13,7 +13,7 @@ import re
 import os
 from tqdm import tqdm
 
-MODEL = 'x7'  # Указываем серию BMW, которую будем парсить
+MODEL = 'i3'  # Указываем серию BMW, которую будем парсить
 FIELDS_LIST = ['bodyType', 'brand', 'color', 'fuelType', 'modelDate', 'name', 'name_full', 'numberOfDoors',
                'productionDate', 'vehicleConfiguration',
                'vehicleTransmission', 'engineDisplacement', 'enginePower', 'description', 'mileage', 'equipment',
