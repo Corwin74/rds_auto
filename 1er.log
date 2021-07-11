@@ -1,0 +1,12 @@
+2021-07-11 15:35:07,355 is when this event was logged.
+2021-07-11 15:35:07,357 Starting new HTTPS connection (1): auto.ru:443
+2021-07-11 15:35:08,457 https://auto.ru:443 "GET /cars/bmw/1er/all/?output_type=list&page=1 HTTP/1.1" 200 None
+2021-07-11 15:40:21,886 is when this event was logged.
+2021-07-11 15:40:21,887 Starting new HTTPS connection (1): auto.ru:443
+2021-07-11 15:40:23,277 https://auto.ru:443 "GET /cars/bmw/1er/all/?page=1 HTTP/1.1" 200 None
+2021-07-11 15:40:53,495 is when this event was logged.
+2021-07-11 15:40:53,496 Starting new HTTPS connection (1): auto.ru:443
+2021-07-11 15:40:54,673 https://auto.ru:443 "GET /cars/bmw/1er/all/?page=1 HTTP/1.1" 200 None
+2021-07-11 15:42:15,999 is when this event was logged.
+2021-07-11 15:42:16,001 Starting new HTTPS connection (1): auto.ru:443
+2021-07-11 15:42:17,401 https://auto.ru:443 "GET /cars/bmw/1er/all/?page=1 HTTP/1.1" 200 None

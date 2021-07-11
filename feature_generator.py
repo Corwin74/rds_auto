@@ -25,7 +25,7 @@ def preproc_data(df_in):
     return dfd
 
 
-df = pd.read_csv(r'C:\Users\Alex\PycharmProjects\untitled\data\auto_data_x.csv')
+df = pd.read_csv(r'/home/alex/rds_auto/data/auto_data_x.csv')
 X = preproc_data(df)
 y = X.iloc[:, -1]
 X = X.iloc[:, :-1]
@@ -38,4 +38,4 @@ cls.fit(X, y, cat_features=cat_features, verbose=False)
 
 # Сохраняем модель для последующией генерации признака 'model' для  "предсказательного" датасета
 
-cls.save_model('model_feature_generator')
+cls.save_model('/home/alex/rds_auto/data/model_feature_generator')
