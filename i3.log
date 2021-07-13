@@ -1,0 +1,17 @@
+2021-07-13 20:09:12,923 is when this event was logged.
+2021-07-13 20:09:12,924 Starting new HTTPS connection (1): auto.ru:443
+2021-07-13 20:09:13,085 https://auto.ru:443 "GET /cars/bmw/i3all/?output_type=table&page=1 HTTP/1.1" 301 0
+2021-07-13 20:09:13,171 https://auto.ru:443 "GET /catalog/cars/bmw/i3all/?output_type=table&page=1 HTTP/1.1" 404 None
+2021-07-13 20:10:09,745 is when this event was logged.
+2021-07-13 20:10:09,746 Starting new HTTPS connection (1): auto.ru:443
+2021-07-13 20:10:10,726 https://auto.ru:443 "GET /cars/bmw/i3/all/?output_type=table&page=1 HTTP/1.1" 200 None
+2021-07-13 20:13:41,948 is when this event was logged.
+2021-07-13 20:13:41,949 Starting new HTTPS connection (1): auto.ru:443
+2021-07-13 20:13:43,028 https://auto.ru:443 "GET /cars/bmw/i3/all/?output_type=table&page=1 HTTP/1.1" 200 None
+2021-07-13 20:14:59,360 is when this event was logged.
+2021-07-13 20:14:59,361 Starting new HTTPS connection (1): auto.ru:443
+2021-07-13 20:15:00,394 https://auto.ru:443 "GET /cars/bmw/i3/all/?output_type=table&page=1 HTTP/1.1" 200 None
+2021-07-13 20:15:00,516 Starting new HTTPS connection (1): auto.ru:443
+2021-07-13 20:15:01,217 https://auto.ru:443 "GET /cars/bmw/i3/all/?output_type=table&page=2 HTTP/1.1" 200 None
+2021-07-13 20:15:01,326 Starting new HTTPS connection (1): auto.ru:443
+2021-07-13 20:15:02,191 https://auto.ru:443 "GET /cars/bmw/i3/all/?output_type=table&page=3 HTTP/1.1" 200 None
